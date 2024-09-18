@@ -60,13 +60,6 @@ class _CameraScreenState extends State<CameraScreen> {
     super.dispose();
   }
 
-  void _flipCamera() {
-    if (isCameraOn) {
-      selectedCameraIndex = (selectedCameraIndex + 1) % widget.cameras.length;
-      _initializeCamera(widget.cameras[selectedCameraIndex]);
-    }
-  }
-
   void _toggleCamera() async {
     if (isCameraOn) {
       await _controller?.dispose();
