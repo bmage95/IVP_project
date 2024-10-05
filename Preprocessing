@@ -26,7 +26,7 @@ def preprocess_image(image_path):
     return img, eroded
 
 
-image_path = "paper.jpeg"  
+image_path = "python\images\Img4.jpg"  
 
 try:
   
@@ -48,8 +48,8 @@ try:
     plt.show()
 
     # Save the preprocessed image
-    cv2.imwrite("preprocessed_paper.jpg", preprocessed)
-    print("Preprocessed image saved as 'preprocessed_paper.jpg'")
+    cv2.imwrite("preprocessed_"+image_path, preprocessed)
+    print("Preprocessed image saved as 'preprocessed_"+image_path)
 
 except Exception as e:
     print(f"An error occurred: {str(e)}")

@@ -9,7 +9,7 @@ pd.options.display.float_format = '{:,.2f}'.format
 
 
 #%%
-im = cv2.imread('images/5.jpg',0)
+im = cv2.imread('preprocessed_python\images\Img4.jpg',0)
 # image = pyplot.imread('img1.jpg')
 
 
