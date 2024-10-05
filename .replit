@@ -1,0 +1,8 @@
+modules = ["cpp-clang14", "swift-5.8", "c-clang14"]
+run = "python app.py"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "python app.py"]
