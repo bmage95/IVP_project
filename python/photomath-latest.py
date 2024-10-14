@@ -64,10 +64,6 @@ def extract_contours(img):
 #%%
 def make_expression(contour):
     for cnt in contour:
-        
-
-
-#%%
 j = 1
 for cnt in contours:
     x,y,w,h = cv2.boundingRect(cnt)
