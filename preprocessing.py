@@ -1,0 +1,56 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+def preprocess_image(image_path):
+    
+    img = cv2.imread(image_path)
+    
+    if img is None:
+        raise ValueError(f"Unable to read the image file: {image_path}")
+
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+    
+
+    thresh = cv2.adaptiveThreshold(blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+    
+  
+    kernel = np.ones((1, 1), np.uint8)
+    dilated = cv2.dilate(thresh, kernel, iterations=1)
+    
+  
+    eroded = cv2.erode(dilated, kernel, iterations=1)
+    
+    return img, eroded
+
+
+image_path = "python\images\Img4.jpg"  
+
+try:
+  
+    original, preprocessed = preprocess_image(image_path)
+
+
+    plt.figure(figsize=(12, 6))
+    plt.subplot(121)
+    plt.imshow(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
+    plt.title("Original Image")
+    plt.axis('off')
+
+    plt.subplot(122)
+    plt.imshow(preprocessed, cmap='gray')
+    plt.title("Preprocessed Image")
+    plt.axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+    # Save the preprocessed image
+    cv2.imwrite("preprocessed_"+image_path, preprocessed)
+    print("Preprocessed image saved as 'preprocessed_"+image_path)
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+    print("Please ensure that the image file exists and is in the correct format.")
