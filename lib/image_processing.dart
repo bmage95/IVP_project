@@ -22,13 +22,13 @@ Future<Uint8List> preprocessImage(String path) async {
   // Step 5: Light Erosion
   final erodedImage = lightErosion(dilatedImage);
 
-  // Resize to 3:4 aspect ratio (e.g., 480x640)
+  // Resize to 3:4 aspect ratio making sure it remains locked
   final resizedImage = copyResize(erodedImage, width: 480, height: 640);
 
   return Uint8List.fromList(encodeJpg(resizedImage));
 }
 
-// Additional helper functions
+// Additional helper functions becuase the image package does not provide them
 Image adaptiveThreshold(Image image, int blockSize, int offset) {
   final result = image.clone();
   for (int y = 0; y < image.height; y++) {

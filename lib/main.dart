@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'detect_text.dart';
-import 'image_processing.dart'; // Import the preprocessing file
+import 'image_processing.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
